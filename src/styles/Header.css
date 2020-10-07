@@ -1,5 +1,5 @@
 .link-header {
-    font-size: 18px;
+  font-size: 18px;
   color: red;
   padding: 5px;
   text-decoration: none;
@@ -10,4 +10,8 @@
   padding: 5px;
   text-decoration: none;
   float: right;
+}
+
+.heading {
+    color: red;
 }

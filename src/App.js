@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import './App.css';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -8,11 +8,15 @@ import PollList from './pages/PollList';
 function App() {
   return (
     <Router>
-      <Route path="/" exact>  <Signup /> </Route>
-      <Route path="/login" exact>  <Login /> </Route>
-      <Route path="/signup" exact>  <Signup /> </Route>
-      <Route path="/polllist" exact>  <PollList /> </Route>
+      <Switch>
+        <Route exact path="/"> {
+          localStorage.getItem("token") ? <PollList /> : <Redirect to="/login" />
+        } </Route>
+        <Route path="/login" exact component={Login} />
+        <Route path="/signup" exact component={Signup} />
+        <Route path="/polllist" exact component={PollList} />
+      </Switch>
     </Router>
-  );
+  )
 }
 export default App;

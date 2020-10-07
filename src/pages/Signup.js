@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Spinner } from "react-bootstrap";
 import Header from '../components/Header';
 import Error from '../components/Error';
 import { useHistory } from 'react-router-dom'
@@ -12,7 +12,7 @@ function Signup() {
     const dispatch = useDispatch()
     const history = useHistory()
     const signupState = useSelector(state => state.SignupReducerstatus)
-    const [role] = useState('admin')
+    const [role, roleUpdate] = useState('')
     const [username, usernameUpdate] = useState('')
     const [password, passwordUpdate] = useState('')
     const [err, errUpdate] = useState('')
@@ -25,13 +25,15 @@ function Signup() {
     }, [signupState.isRegistion])
 
     const formDataHandler = () => {
-        const formData = { username, password, role: role }
+        const formData = { username, password, role }
+        console.log(formData)
         dispatch(signupReq(formData))
     }
 
     return (<>
         {
-            signupState.isRegistion ? 'Loading...' :
+            signupState.isRegistion ?
+                <Spinner animation="border" variant="info" className="Spinner" /> :
                 <div className="Signup">
                     <Header heading="SIGNUP" />
                     <Form className="signup-form"
@@ -48,6 +50,18 @@ function Signup() {
                             <Form.Control type="password" placeholder="Password" value={password}
                                 onChange={(event) => { passwordUpdate(event.target.value) }} />
                         </Form.Group>
+
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label> Select Role </Form.Label>
+                            <Form.Control as="select"
+                                value={role}
+                                onChange={(event) => { roleUpdate(event.target.value) }}>
+                                <option value=""> Select Role </option>
+                                <option value="admin"> Admin </option>
+                                <option value="guest"> Guest </option>
+                            </Form.Control>
+                        </Form.Group>
+
                         <Button variant="primary" type="submit"> SIGNUP </Button>
                     </Form>
                 </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Spinner } from "react-bootstrap";
 import '../styles/Login.css';
 import Header from '../components/Header';
 import Error from '../components/Error';
@@ -20,7 +20,7 @@ function Login() {
         if (LoginData.isLogin) {
             history.push('/polllist')
         }
-        LoginData.response ?  errUpdate(LoginData.response.data) : errUpdate('')
+        LoginData.response ? errUpdate(LoginData.response.data) : errUpdate('')
     }, [LoginData])
 
     const formDataHandler = () => {
@@ -30,7 +30,8 @@ function Login() {
 
     return (<>
         {
-            LoginData.isLoading ? " Loading..." :
+            LoginData.isLoading ?
+                <Spinner animation="border" variant="info" className="Spinner" /> :
                 <div className="Login">
                     <Header heading="LOGIN" />
                     <Form className="login-form"
@@ -41,7 +42,7 @@ function Login() {
                                 onChange={(event) => { usernameUpdate(event.target.value) }}
                             />
                         </Form.Group>
-                        <Error heading={err}/>
+                        <Error heading={err} />
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" value={password}
