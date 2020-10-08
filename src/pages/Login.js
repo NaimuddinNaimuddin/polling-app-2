@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Button, Spinner } from "react-bootstrap";
+import { Form, Button, Spinner, Alert } from "react-bootstrap";
 import '../styles/Login.css';
 import Header from '../components/Header';
-import Error from '../components/Error';
 import { loginReq } from '../redux/action/index'
 import { useHistory } from 'react-router-dom'
 import { useEffect } from 'react';
@@ -22,12 +21,10 @@ function Login() {
         }
         LoginData.response ? errUpdate(LoginData.response.data) : errUpdate('')
     }, [LoginData])
-
     const formDataHandler = () => {
         const formData = { username, password }
         dispatch(loginReq(formData))
     }
-
     return (<>
         {
             LoginData.isLoading ?
@@ -42,7 +39,7 @@ function Login() {
                                 onChange={(event) => { usernameUpdate(event.target.value) }}
                             />
                         </Form.Group>
-                        <Error heading={err} />
+                        {err ? <Alert variant='danger'> {err} </Alert> : ''}
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" value={password}

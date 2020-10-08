@@ -3,10 +3,12 @@ import React from 'react';
 function Poll({ poll }) {
     return (
         <div className="Poll">
-            Title : { poll.title}  <br />
-            Options : { poll.options.map(option => {
-            return <div key={Math.random()}>  <input type="radio" name="radio" />  {option}  </div>
-        })}
+            { poll.title}
+            {poll.options.map(i => {
+                return <div key={Math.random()}>
+                    <input type="radio" name="option" /> {i.option}
+                </div>
+            })}
         </div>
     );
 }

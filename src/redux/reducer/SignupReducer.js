@@ -1,9 +1,9 @@
 import * as constant from "../constant";
 
 let initialState = {
-    isRegistion: false,
+    isSignup: false,
     isLoading: false,
-    error: ''
+    isError : false
 };
 
 const Signup = (state = initialState, action) => {
@@ -11,24 +11,24 @@ const Signup = (state = initialState, action) => {
         case constant.SIGNUP_REQ:
             return {
                 ...state,
-                isRegistion: false,
+                isSignup: false,
                 isLoading: true,
-                error: ''
+                isError : false
             };
         case constant.SIGNUP_SUCCESS:
             return {
                 ...state,
-                isRegistion: true,
+                isSignup: true,
                 isLoading: false,
-                response: action.payload,
-                error: ''
+                response: action.payload
             };
         case constant.SIGNUP_ERR:
             return {
                 ...state,
-                isRegistion: false,
+                isSignup: false,
                 isLoading: false,
-                error: action.payload
+                isError : true,
+                response: action.payload
             };
         default:
             return {

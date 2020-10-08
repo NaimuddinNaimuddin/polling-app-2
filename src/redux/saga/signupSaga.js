@@ -7,9 +7,7 @@ function* signupSaga(action) {
     const data = yield response.json()
     data.error ? yield put(signupErr(data)) : yield put(signupSuccess(data))
 }
-
 function* signupRequest() {
     yield takeLatest(constant.SIGNUP_REQ, signupSaga);
 }
-
 export default signupRequest

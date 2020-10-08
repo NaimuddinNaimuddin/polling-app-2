@@ -7,16 +7,14 @@ let initialState = {
 function LoginReducer(state = initialState, action) {
     switch (action.type) {
         case constant.LOGIN_REQ: {
-            console.log('login req')
-            return {
+                return {
                 ...state,
                 isLoading: true,
                 isLogin: false
             }
         }
         case constant.LOGIN_SUCCESS: {
-            console.log('login success')
-            return {
+                    return {
                 ...state,
                 isLoading: false,
                 isLogin: true,
@@ -24,8 +22,7 @@ function LoginReducer(state = initialState, action) {
             }
         }
         case constant.LOGIN_ERR: {
-            console.log('login error')
-            return {
+                     return {
                 ...state,
                 isLoading: false,
                 isLogin: false,
