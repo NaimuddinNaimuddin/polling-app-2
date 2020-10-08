@@ -1,0 +1,17 @@
+.link-header {
+  font-size: 18px;
+  color: red;
+  padding: 5px;
+  text-decoration: none;
+  float: right;
+}
+.link-header:hover {
+  color: red;
+  padding: 5px;
+  text-decoration: none;
+  float: right;
+}
+
+.heading {
+    color: red;
+}

@@ -1,1 +1,13 @@
-
+body{
+    margin :0;
+}
+.Spinner{
+    text-align: center;
+    margin-top: 10%;
+    margin-left: 50%;
+}
+.Poll{
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
