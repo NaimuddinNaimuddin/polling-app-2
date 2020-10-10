@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Accordion, Card, Button, Col, Form, Row } from 'react-bootstrap'
+import { X } from 'react-bootstrap-icons';
 
 function Poll(props) {
 
@@ -12,9 +13,9 @@ function Poll(props) {
                 <Card.Body>
                     {props.poll.options.map(i => {
                         return <div key={Math.random()} className="m-3">
-                            <input type="radio" name="option" /> {i.option}
+                            <input type="radio" name="option" /> {i.option}  ......... {i.vote}
                             <Button onClick={() => { props.deleteOptionHandler(props.poll._id, i.option) }}
-                                variant="danger" size="sm" className="float-right mt-2"> Delete option </Button>
+                                variant="danger" size="sm" className="float-right mt-2"> <X /> </Button>
                         </div>
                     })}
                 </Card.Body>

@@ -1,6 +1,8 @@
 import { takeLatest, put } from 'redux-saga/effects'
 import * as constant from '../constant'
+import axios from 'axios'
 import {
+    voteErr, voteSuccess,
     listSuccess, listErr, dellistSuccess, dellistErr,
     deloptionlistSuccess, deloptionlistErr,
     addoptionlistSuccess, addoptionlistErr,
@@ -78,11 +80,33 @@ function* addOptionlistSaga(action) {
         yield put(dellistErr('Error'))
     }
 }
+function* voteSaga(action) {
+    console.log(action)
+    const { id, text } = action.payload
+    const url = `https://secure-refuge-14993.herokuapp.com/do_vote?id=${id}&option_text=${text}`
+    // const url = `https://secure-refuge-14993.herokuapp.com/add_new_option?id=${id}&option_text=${text}`
+    try {
+        const res = yield axios({
+            method: 'get',
+            url: url,
+            headers: {
+                access_token: localStorage.getItem('token')
+            }
+        })
+        console.log(res)
+        res.error ?
+            yield put(voteErr(res)) :
+            yield put(voteSuccess(res));
+    } catch (error) {
+        yield put(dellistErr('Error'))
+    }
+}
 function* listRequest() {
     yield takeLatest(constant.LIST_REQ, listSaga);
     yield takeLatest(constant.ADD_LIST_REQ, addlistSaga);
     yield takeLatest(constant.DEL_LIST_REQ, dellistSaga);
     yield takeLatest(constant.DEL_OPTION_LIST_REQ, delOptionlistSaga);
     yield takeLatest(constant.ADD_OPTION_LIST_REQ, addOptionlistSaga);
+    yield takeLatest(constant.VOTE_REQ, voteSaga);
 }
 export default listRequest

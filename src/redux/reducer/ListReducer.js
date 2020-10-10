@@ -109,6 +109,27 @@ function ListReducer(state = initialState, action) {
                 isAdd: false
             }
         }
+        case constant.VOTE_REQ: {
+            return {
+                ...state,
+                isVoteLoading: true,
+                isVote: false
+            }
+        }
+        case constant.VOTE_SUCCESS: {
+            return {
+                ...state,
+                isVoteLoading: false,
+                isVote: true
+            }
+        }
+        case constant.VOTE_ERR: {
+            return {
+                ...state,
+                isVoteLoading: false,
+                isVote: false
+            }
+        }
         default:
             return state
     }

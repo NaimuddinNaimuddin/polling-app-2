@@ -25,3 +25,11 @@ export const DEL_OPTION_LIST_ERR = "DEL_OPTION_LIST_ERR"
 export const ADD_OPTION_LIST_REQ = "ADD_OPTION_LIST_REQ"
 export const ADD_OPTION_LIST_SUCCESS = "ADD_OPTION_LIST_SUCCESS"
 export const ADD_OPTION_LIST_ERR = "ADD_OPTION_LIST_ERR"
+
+export const VOTE_REQ = "VOTE_REQ"
+export const VOTE_SUCCESS = "VOTE_SUCCESS"
+export const VOTE_ERR = "VOTE_ERR"
+
+export const TITLE_REQ = "TITLE_REQ"
+export const TITLE_SUCCESS = "TITLE_SUCCESS"
+export const TITLE_ERR = "TITLE_ERR"

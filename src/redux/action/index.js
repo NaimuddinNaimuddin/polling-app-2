@@ -28,3 +28,11 @@ export const deloptionlistErr = createAction(constant.DEL_OPTION_LIST_ERR);
 export const addoptionlistReq = createAction(constant.ADD_OPTION_LIST_REQ);
 export const addoptionlistSuccess = createAction(constant.ADD_OPTION_LIST_SUCCESS);
 export const addoptionlistErr = createAction(constant.ADD_OPTION_LIST_ERR);
+
+export const voteReq = createAction(constant.VOTE_REQ);
+export const voteSuccess = createAction(constant.VOTE_SUCCESS);
+export const voteErr = createAction(constant.VOTE_ERR);
+
+export const titleReq = createAction(constant.TITLE_REQ);
+export const titleSuccess = createAction(constant.TITLE_SUCCESS);
+export const titleErr = createAction(constant.TITLE_ERR);
